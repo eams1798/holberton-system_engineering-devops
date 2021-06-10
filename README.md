@@ -1,0 +1,1 @@
+New project for shell scripts. Made by Holberton School.
