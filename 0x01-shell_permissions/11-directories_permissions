@@ -1,0 +1,2 @@
+#!/bin/bash
+find /holberton-system_engineering-devops/0x01-shell_permissions/ -type d -exec chmod a+x {} +
