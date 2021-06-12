@@ -1,0 +1,2 @@
+#!/bin/bash
+echo -e "\n$(ls -a -F -m --width=0)\n"
