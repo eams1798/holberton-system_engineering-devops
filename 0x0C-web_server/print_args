@@ -1,0 +1,15 @@
+#!/bin/bash
+argc=("$#")
+argv=("$@")
+
+echo "Number of arguments: $argc"
+if [[ $(($# % 2)) == 0 ]]
+then
+	echo "argumentos pares"
+else
+	echo "argumentos impares"
+fi
+for ((n=0; n<"$#"; n++))
+do
+	echo "${argv[${n}]}"
+done
