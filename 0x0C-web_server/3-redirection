@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Script that installs Nginx server and creates a 301 redirection
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo touch /var/www/html/index.html
+sudo chmod a+w /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.html
+sudo service nginx start
+
+FILENAME=/etc/nginx/sites-available/default
+RDRCT_WEB="https://www.youtube.com/watch?v=QH2-TGUlwu4"
+line=1
+while read -r strline; do
+	if [[ $strline == *"location"* ]]
+	then
+		break
+	fi
+	((line+=1))
+done < $FILENAME
+redirect="\n\tlocation /redirect_me {\n\t\treturn 301 ${RDRCT_WEB};\n\t}\n"
+sudo sed -i "${line}i\ ${redirect}" $FILENAME
+sudo service nginx restart
+sudo service nginx reload
