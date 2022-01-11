@@ -15,7 +15,7 @@ file { '/var/www/html/index.html':
   ensure  => file,
   path    => '/var/www/html/index.html',
   mode    => '0644'
-  content => 'Hellow World'
+  content => 'Hello World'
 }
 
 file { '/usr/share/nginx/html/404.html':
