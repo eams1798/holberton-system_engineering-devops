@@ -1,7 +1,7 @@
 # Configure a NGINX server with Puppet
 
 package { 'nginx':
-  ensure => installed,
+  ensure => installed
 }
 
 file_line { 'Add redirection, 301':
@@ -13,8 +13,6 @@ file_line { 'Add redirection, 301':
 
 file { '/var/www/html/index.html':
   ensure  => file,
-  path    => '/var/www/html/index.html',
-  mode    => '0644'
   content => 'Hello World'
 }
 
@@ -27,5 +25,5 @@ file { '/usr/share/nginx/html/404.html':
 
 service { 'nginx':
   ensure  => running,
-  require => Package['nginx'],
+  require => Package['nginx']
 }
