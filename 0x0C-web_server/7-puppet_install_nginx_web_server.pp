@@ -16,12 +16,12 @@ file { '/var/www/html/index.html':
   content => 'Hello World'
 }
 
-file { '/usr/share/nginx/html/404.html':
-  ensure  => file,
-  path    => '/usr/share/nginx/html/404.html',
-  mode    => '0644'
-  content => 'Ceci n\'est pas une page'
-}
+#file { '/usr/share/nginx/html/404.html':
+#  ensure  => file,
+#  path    => '/usr/share/nginx/html/404.html',
+#  mode    => '0644'
+#  content => 'Ceci n\'est pas une page'
+#}
 
 service { 'nginx':
   ensure  => running,
