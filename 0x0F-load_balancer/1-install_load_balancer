@@ -1,16 +1,23 @@
 #!/usr/bin/env bash
-#install haproxy and configure on system
-sudo apt install -y haproxy=2.0\*
-FILE=/etc/haproxy/haproxy.cfg
-echo -e "frontend web-frontend
-\tbind *:80
-\tmode http
-\tdefault_backend web_backend
-backend web_backend
-\tmode http
-\tbalance roundrobin
-\toption forwardfor
-\thttp-request set-header X-Forwarded-Port %[dst_port]
-\tserver 3401-web-01 35.190.145.109:80 check
-\tserver 3401-web-02 54.89.149.139:80 check" | sudo tee -a $FILE > dev/null
+# Configures load balancer
+
+sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt-get install -y software-properties-common
+sudo add-apt-repository -y ppa:vbernat/haproxy-2.0
+sudo apt-get install -y haproxy=2.0.\*
+sudo chown -R ubuntu /etc/haproxy
+
+configuration="\
+frontend http
+        bind *:80
+        mode http
+        default_backend web-server
+backend web-server
+        balance roundrobin
+        server web-01 35.190.145.109:80 check
+        server web-02 54.89.149.139:80 check
+"
+
+sudo echo "$configuration" >> /etc/haproxy/haproxy.cfg
 sudo service haproxy restart
