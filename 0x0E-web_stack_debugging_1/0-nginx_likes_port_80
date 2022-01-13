@@ -2,7 +2,7 @@
 # Make your Nginx server listen on port 80
 filepath=/etc/nginx/sites-available/default
 listenport=$(cat "$filepath" | grep listen | head -n 1 | cut -d " " -f2)
-sudo sed -i "s/listen {$listenport}/listen 80/1" "$filepath"
-sudo sed -i "s/listen [::]:{$listenport}/listen [::]:80/1" "$filepath"
-sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo sed -i "s/listen ${listenport}/listen 80/1" $filepath
+sudo sed -i "s/listen \[\:\:\]\:${listenport}/listen \[\:\:\]\:80/1" $filepath
+sudo cp $filepath /etc/nginx/sites-enabled/default
 sudo service nginx restart
