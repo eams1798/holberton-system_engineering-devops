@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+# $1: fabfile
+# $2: method of the fabfile
+if [[ $# == 2 ]]
+then
+    fab -f $1 $2 -i ~/.ssh/school -u ubuntu
+fi
