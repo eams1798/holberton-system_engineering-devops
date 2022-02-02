@@ -17,7 +17,7 @@ if __name__ == "__main__":
     uid = 1
     it = 0
     for t in tasks:
-        if (uid != t.get('userId')) or (it == len(tasks)):
+        if uid != t.get('userId'):
             dct_users[str(uid)] = todolst
             todolst = []
             uid += 1
@@ -27,6 +27,10 @@ if __name__ == "__main__":
         todolst.append(tododct)
         tododct = {}
         it += 1
+        if it == len(tasks):
+            dct_users[str(uid)] = todolst
+            todolst = []
+            uid += 1
     with open("todo_all_employees.json", "w") as file:
         todojs = json.dumps(dct_users)
         file.write(todojs)
