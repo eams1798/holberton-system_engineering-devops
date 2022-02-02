@@ -19,7 +19,7 @@ if __name__ == "__main__":
     for n in range(len(todo)):
         task = "\"task\": \"{}\"".format(todo[n].get('title'))
         completed = "\"completed\": {}".format(str(todo[n].get('completed'))
-                                                            .lower())
+                                               .lower())
         username = "\"username\": \"{}\"".format(name)
         strdict += "{{{0}, {1}, {2}}}".format(task, completed, username)
         if n != len(todo) - 1:

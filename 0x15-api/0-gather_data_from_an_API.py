@@ -22,7 +22,7 @@ if __name__ == "__main__":
             if todo.get('completed') is True:
                 done_t += 1
             tasks += 1
-    print("Employee {} is done with tasks({}/{})".format(name, done_t, tasks))
+    print("Employee {} is done with tasks({}/{}):".format(name, done_t, tasks))
     for todo in lsttodos:
         if todo.get('completed') is True:
             print("\t {}".format(todo.get('title')))
