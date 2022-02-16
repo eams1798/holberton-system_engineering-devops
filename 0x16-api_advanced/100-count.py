@@ -49,15 +49,15 @@ def binary_search(word, wordlist, start, end):
 def linear_count(word, index, hot_list):
     """frequency of a word in a list of words"""
     count_left = 0
-    l = index
-    while word == hot_list[l]:
+    left = index
+    while word == hot_list[left]:
         count_left += 1
-        l -= 1
+        left -= 1
     count_right = 0
-    r = index + 1
-    while word == hot_list[r]:
+    right = index + 1
+    while word == hot_list[right]:
         count_right += 1
-        r += 1
+        right += 1
     return count_left + count_right
 
 
@@ -70,9 +70,11 @@ def count_words(subreddit, word_list):
         idxsearch = binary_search(word, hot_list, 0, len(hot_list) - 1)
         if idxsearch != -1:
             if word.lower() not in dct_count.keys():
-                dct_count[word.lower()] = linear_count(word, idxsearch, hot_list)
+                dct_count[word.lower()] = linear_count(word,
+                                                       idxsearch, hot_list)
             else:
-                dct_count[word.lower()] += linear_count(word, idxsearch, hot_list)
+                dct_count[word.lower()] += linear_count(word,
+                                                        idxsearch, hot_list)
     sortedvalues = list(dct_count.values())
 
     sortedvalues.sort()
