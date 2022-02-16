@@ -11,6 +11,8 @@ if __name__ == '__main__':
     else:
         result = recurse(sys.argv[1])
         if result is not None:
+            for res in result:
+                print(res)
             print(len(result))
         else:
             print("None")

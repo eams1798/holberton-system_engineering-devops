@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """1. Top Ten"""
 
+
 def top_ten(subreddit):
     """First 10 hot posts listed for a given subreddit"""
     import requests

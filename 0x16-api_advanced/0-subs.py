@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """0. How many subs?"""
 
+
 def number_of_subscribers(subreddit):
     """Subscribers of a subreddit"""
     import requests
